@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dibujo Completo + Animaciones + Cielos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // SOL y LUNA
+      let xs, ys, ds, vs, rs;
+      let xl, yl, dl, vl, rl;
+
+      // CIELOS adelantados
+      let x_cs, adelanto_s;
+      let x_cl, adelanto_l;
+
+      // GLOBO
+      let xG, yG, vyG, Sg, cuerda;
+
+      // ÁRBOL
+      let S, troncoW, troncoH, copaD;
+
+      // COCHE NUEVO Y AMARILLO (animado)
+      let xC, vxC, L, H, wheelD;
+
+      function setup() {
+        createCanvas(1000, 800);
+
+        // Sol
+        ds = width * 0.10;
+        rs = ds / 2;
+        xs = -rs;
+        ys = height * 0.17;
+        vs = width / 300;
+
+        // Luna
+        dl = width * 0.10;
+        rl = dl / 2;
+        xl = -width - rl;
+        yl = height * 0.17;
+        vl = width / 300;
+
+        // Cielos adelantados
+        adelanto_s = width * 0.05;  // 5% del ancho
+        x_cs = xs + adelanto_s;
+        adelanto_l = width * 0.05;
+        x_cl = xl + adelanto_l;
+
+        // Globo → MOVIDO A LA DERECHA
+        Sg = 0.09 * height;
+        cuerda = 1.2 * Sg;
+        xG = width * 0.92;
+        yG = height * 0.75;
+        vyG = 2;
+
+        // Árbol
+        S = 0.10 * height;
+        troncoW = 0.3 * S;
+        troncoH = 1.2 * S;
+        copaD = 1.1 * S;
+
+        // Coche nuevo
+        L = 0.20 * height;
+        H = 0.45 * L;
+        wheelD = 0.3 * L;
+        xC = -L;
+        vxC = width / 300;
+      }
+
+      function draw() {
+        // Fondo base
+        background(51, 204, 204);
+
+        // CIELOS adelantados
+        fill(100, 150, 255);  // cielo del sol
+        rect(x_cs, 0, width, height * 0.8);
+        fill(200);             // cielo de la luna
+        rect(x_cl, 0, width, height * 0.8);
+
+        // SOL
+        fill(255, 255, 0);
+        circle(xs, ys, ds);
+        xs += vs;
+        x_cs += vs;  // el cielo del sol se desplaza con el sol
+
+        // LUNA
+        fill(79, 92, 82);
+        circle(xl, yl, dl);
+        xl += vl;
+        x_cl += vl;  // el cielo de la luna se desplaza con la luna
+
+        // ARCOÍRIS
+        noFill();
+        strokeWeight(10);
+        stroke(255, 0, 0);
+        arc(620, 400, 400, 300, PI, 0);
+        stroke(255, 255, 0);
+        arc(620, 400, 370, 270, PI, 0);
+        stroke(0, 0, 255);
+        arc(620, 400, 340, 240, PI, 0);
+        strokeWeight(1);
+
+        // 🎈 GLOBO
+        fill(255, 100, 80);
+        circle(xG, yG, Sg);
+        stroke(0);
+        line(xG, yG + Sg * 0.5, xG, yG + Sg * 0.5 + cuerda);
+        yG -= vyG;
+
+        // PRADO
+        fill(34, 139, 34);
+        rect(0, 600, width, 200);
+
+        // CASA → MOVIDA A LA DERECHA (+80 px)
+        let casaX = 175 + 80;
+        fill(210, 180, 140);
+        rect(casaX, 400, 400, 200);
+        fill(179, 36, 0);
+        triangle(casaX, 400, casaX + 401, 400, casaX + 205, 280);
+        fill(139, 69, 19);
+        rect(casaX + 140, 500, 110, 100);
+        fill(173, 216, 230);
+        rect(casaX + 57, 430, 80, 40);
+        rect(casaX + 255, 430, 80, 40);
+        stroke(0);
+        line(casaX + 97, 430, casaX + 97, 470);
+        line(casaX + 57, 450, casaX + 137, 450);
+        line(casaX + 295, 430, casaX + 295, 470);
+        line(casaX + 255, 450, casaX + 335, 450);
+
+        // NUBE
+        noStroke();
+        fill(255);
+        circle(770, 400, 50);
+        circle(800, 400, 50);
+        circle(830, 400, 50);
+        circle(860, 410, 50);
+        circle(740, 410, 50);
+        circle(760, 430, 50);
+        circle(790, 430, 50);
+        circle(820, 430, 50);
+        circle(840, 430, 50);
+        stroke(0);
+
+        // 🌳 ÁRBOL CRECIENDO
+        fill(120, 80, 40);
+        rect(140, 600 - troncoH, troncoW, troncoH);
+        fill(40, 140, 60);
+        circle(140 + troncoW / 2, 600 - troncoH - copaD / 3, copaD);
+        S += 0.30;
+        troncoW = 0.3 * S;
+        troncoH = 1.2 * S;
+        copaD = 1.1 * S;
+
+        // 🚗 TU COCHE ROJO
+         strokeWeight(0)
+  stroke(0, 0, 0);
+   fill(0, 0, 0)
+  circle(700, 630, 50); 
+ circle(800, 630, 50); 
+   fill(163, 163, 194)
+  circle(700, 630, 35); 
+ circle(800, 630, 35); 
+    strokeWeight(1);
+      fill(255, 255, 102)
+   circle(410, 550, 10); 
+    strokeWeight(1);
+    fill(255, 0, 0)
+  ellipse(750, 600, 200, 80);
+    strokeWeight(1);
+     fill(255, 255, 102)
+  circle(410, 550, 10); 
+   strokeWeight(1);
+   fill(255, 0, 0)
+  ellipse(750, 600, 200, 80);
+   strokeWeight(1);
+  arc(745, 570, 100, 100, PI, 0);
+ strokeWeight(1);
+  fill(163, 163, 194);    
+  strokeWeight(1);
+   arc(745, 560, 60, 60, PI, 0);  
+ strokeWeight(1);
+    strokeWeight(1)
+    fill(0, 0, 0)
+  circle(700, 630, 50); 
+   circle(800, 630, 50); 
+     fill(163, 163, 194)
+    circle(700, 630, 35); 
+     circle(800, 630, 35); 
+            
+        // 🚗 COCHE AMARILLO ANIMADO
+        fill(255, 180, 0);
+        rect(xC, 670, L, H, 20);
+        fill(0);
+        circle(xC + 40, 740, wheelD);
+        circle(xC + L - 40, 740, wheelD);
+        fill(180);
+        circle(xC + 40, 740, wheelD * 0.55);
+        circle(xC + L - 40, 740, wheelD * 0.55);
+        xC += vxC;
+      }
+    </script>
+  </body>
+</html>
+
