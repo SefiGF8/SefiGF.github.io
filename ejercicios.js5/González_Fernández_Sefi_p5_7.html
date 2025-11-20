@@ -7,8 +7,6 @@
   </head>
   <body>
     <script>
-
-      // PRIMERO DENOMINAMOS TODAS LAS VARIABLES
       // SOL y LUNA
       let xs, ys, ds, vs, rs;
       let xl, yl, dl, vl, rl;
@@ -23,21 +21,20 @@
       // ÁRBOL
       let S, troncoW, troncoH, copaD;
 
-      // COCHE NUEVO Y AMARILLO (animado)
+      // COCHE NUEVO Y AMARILLO (ANIMADO)
       let xC, vxC, L, H, wheelD;
 
-      //  A CONTINUACIÓN ABRIMOS FUNCTION SETUP Y DENOMINAMOS CADA VARIABLE A CADA OBJETO
       function setup() {
         createCanvas(1000, 800);
 
-        // SOL
+        // Sol
         ds = width * 0.10;
         rs = ds / 2;
         xs = -rs;
         ys = height * 0.17;
         vs = width / 300;
 
-        // LUNA
+        // Luna
         dl = width * 0.10;
         rl = dl / 2;
         xl = -width - rl;
@@ -45,12 +42,12 @@
         vl = width / 300;
 
         // CIELOS ADELANTADOS
-        adelanto_s = width * 0.05; 
+        adelanto_s = width * 0.05;  
         x_cs = xs + adelanto_s;
         adelanto_l = width * 0.05;
         x_cl = xl + adelanto_l;
 
-        // GLOBO
+        // GLOBO QUE FUÉ MOVIDO A LA DERECHA
         Sg = 0.09 * height;
         cuerda = 1.2 * Sg;
         xG = width * 0.92;
@@ -63,7 +60,7 @@
         troncoH = 1.2 * S;
         copaD = 1.1 * S;
 
-        // COCHE NUEVO AMARILLO QUE VA A SER ANIMADO
+        // COCHE NUEVO AMARILLO
         L = 0.20 * height;
         H = 0.45 * L;
         wheelD = 0.3 * L;
@@ -71,29 +68,29 @@
         vxC = width / 300;
       }
 
-     // DESPUÉS ABRIMOS FUNCTION DRAW QUE SIVE PARA QUE CADA OBJETO ESTE ANIMADO EN EL INSTANTE QUE TU QUIERAS ADEMÁS DE QUE EN ESTE APARTADO TIENES QUE TENER TAMBIÉN TUS ELEMNETOS FIJOS. 
       function draw() {
-        // Fondo base
+          
+        // FONDO BASE
         background(51, 204, 204);
 
         // CIELOS ADELANTADOS
-        fill(100, 150, 255);  // cielo del sol
+        fill(100, 150, 255);  // CIELO DEL SOL
         rect(x_cs, 0, width, height * 0.8);
-        fill(200);             // cielo de la luna
+        fill(200);             // CIELO DE LA LUNA
         rect(x_cl, 0, width, height * 0.8);
 
         // SOL
         fill(255, 255, 0);
         circle(xs, ys, ds);
         xs += vs;
-        x_cs += vs;  // el cielo del sol se desplaza con el sol
+        x_cs += vs;  //  EL CIELO DEL SOL SE DESPLAZA CON EL SOL
 
         // LUNA
         fill(79, 92, 82);
         circle(xl, yl, dl);
         xl += vl;
-        x_cl += vl;  
-
+        x_cl += vl;  //  EL CIELO DE LA LUNA SE DESPLAZA CON LA LUNA
+          
         // ARCOÍRIS
         noFill();
         strokeWeight(10);
@@ -105,18 +102,22 @@
         arc(620, 400, 340, 240, PI, 0);
         strokeWeight(1);
 
-        // 🎈 GLOBO
-        fill(255, 100, 80);
+       // GLOBO
+        fill(255, 80, 80);
         circle(xG, yG, Sg);
-        stroke(0);
-        yG = yG - vyG
-        xG=xG-vyG
-              
+        stroke(60);
+        xG = xG - vyG;
+        yG -= vyG;
+
+        // Línea de la cuerda del globo
+        line(xG, yG + 0.5 * Sg, xG, yG + 0.5 * Sg + cuerda);
+        
+
         // PRADO
         fill(34, 139, 34);
         rect(0, 600, width, 200);
 
-        // CASA 
+        // CASA QUE FUE MOVIDA A LA DERECHA (+80)
         let casaX = 175 + 80;
         fill(210, 180, 140);
         rect(casaX, 400, 400, 200);
@@ -133,7 +134,7 @@
         line(casaX + 295, 430, casaX + 295, 470);
         line(casaX + 255, 450, casaX + 335, 450);
 
-        // NUBE
+        // NUBE (COMBINACIÓN DE CÍRCULOS)
         noStroke();
         fill(255);
         circle(770, 400, 50);
@@ -147,7 +148,7 @@
         circle(840, 430, 50);
         stroke(0);
 
-        // 🌳 ÁRBOL CRECIENDO
+        // 🌳 ÁRBOL CRECIENDO POCO A POCO
         fill(120, 80, 40);
         rect(140, 600 - troncoH, troncoW, troncoH);
         fill(40, 140, 60);
@@ -193,7 +194,7 @@
     circle(700, 630, 35); 
      circle(800, 630, 35); 
             
-        // 🚗 COCHE AMARILLO ANIMADO
+        // 🚗 COCHE AMARILLO ANIMADO AMARILLO
         fill(255, 180, 0);
         rect(xC, 670, L, H, 20);
         fill(0);
@@ -207,6 +208,8 @@
     </script>
   </body>
 </html>
+
+
 
 
 
