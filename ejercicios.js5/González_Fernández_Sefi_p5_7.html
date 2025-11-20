@@ -106,13 +106,12 @@
         strokeWeight(1);
 
         // 🎈 GLOBO
-         xG=xG-vG
-        yG = yG - vG
         fill(255, 100, 80);
         circle(xG, yG, Sg);
         stroke(0);
-       
-
+        yG = yG - vyG
+        xG=xG-vyG
+              
         // PRADO
         fill(34, 139, 34);
         rect(0, 600, width, 200);
@@ -208,5 +207,6 @@
     </script>
   </body>
 </html>
+
 
 
