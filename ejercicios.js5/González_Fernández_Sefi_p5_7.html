@@ -7,6 +7,8 @@
   </head>
   <body>
     <script>
+
+      // PRIMERO DENOMINAMOS TODAS LAS VARIABLES
       // SOL y LUNA
       let xs, ys, ds, vs, rs;
       let xl, yl, dl, vl, rl;
@@ -24,43 +26,44 @@
       // COCHE NUEVO Y AMARILLO (animado)
       let xC, vxC, L, H, wheelD;
 
+      //  A CONTINUACIÓN ABRIMOS FUNCTION SETUP Y DENOMINAMOS CADA VARIABLE A CADA OBJETO
       function setup() {
         createCanvas(1000, 800);
 
-        // Sol
+        // SOL
         ds = width * 0.10;
         rs = ds / 2;
         xs = -rs;
         ys = height * 0.17;
         vs = width / 300;
 
-        // Luna
+        // LUNA
         dl = width * 0.10;
         rl = dl / 2;
         xl = -width - rl;
         yl = height * 0.17;
         vl = width / 300;
 
-        // Cielos adelantados
-        adelanto_s = width * 0.05;  // 5% del ancho
+        // CIELOS ADELANTADOS
+        adelanto_s = width * 0.05; 
         x_cs = xs + adelanto_s;
         adelanto_l = width * 0.05;
         x_cl = xl + adelanto_l;
 
-        // Globo → MOVIDO A LA DERECHA
+        // GLOBO
         Sg = 0.09 * height;
         cuerda = 1.2 * Sg;
         xG = width * 0.92;
         yG = height * 0.75;
         vyG = 2;
 
-        // Árbol
+        // ÁRBOL
         S = 0.10 * height;
         troncoW = 0.3 * S;
         troncoH = 1.2 * S;
         copaD = 1.1 * S;
 
-        // Coche nuevo
+        // COCHE NUEVO AMARILLO QUE VA A SER ANIMADO
         L = 0.20 * height;
         H = 0.45 * L;
         wheelD = 0.3 * L;
@@ -68,11 +71,12 @@
         vxC = width / 300;
       }
 
+     // DESPUÉS ABRIMOS FUNCTION DRAW QUE SIVE PARA QUE CADA OBJETO ESTE ANIMADO EN EL INSTANTE QUE TU QUIERAS ADEMÁS DE QUE EN ESTE APARTADO TIENES QUE TENER TAMBIÉN TUS ELEMNETOS FIJOS. 
       function draw() {
         // Fondo base
         background(51, 204, 204);
 
-        // CIELOS adelantados
+        // CIELOS ADELANTADOS
         fill(100, 150, 255);  // cielo del sol
         rect(x_cs, 0, width, height * 0.8);
         fill(200);             // cielo de la luna
@@ -88,7 +92,7 @@
         fill(79, 92, 82);
         circle(xl, yl, dl);
         xl += vl;
-        x_cl += vl;  // el cielo de la luna se desplaza con la luna
+        x_cl += vl;  
 
         // ARCOÍRIS
         noFill();
@@ -102,17 +106,18 @@
         strokeWeight(1);
 
         // 🎈 GLOBO
+         xG=xG-vG
+        yG = yG - vG
         fill(255, 100, 80);
         circle(xG, yG, Sg);
         stroke(0);
-        line(xG, yG + Sg * 0.5, xG, yG + Sg * 0.5 + cuerda);
-        yG -= vyG;
+       
 
         // PRADO
         fill(34, 139, 34);
         rect(0, 600, width, 200);
 
-        // CASA → MOVIDA A LA DERECHA (+80 px)
+        // CASA 
         let casaX = 175 + 80;
         fill(210, 180, 140);
         rect(casaX, 400, 400, 200);
@@ -153,7 +158,7 @@
         troncoH = 1.2 * S;
         copaD = 1.1 * S;
 
-        // 🚗 TU COCHE ROJO
+        // 🚗 MI COCHE ROJO FIJO
          strokeWeight(0)
   stroke(0, 0, 0);
    fill(0, 0, 0)
@@ -203,4 +208,5 @@
     </script>
   </body>
 </html>
+
 
